@@ -1,5 +1,2 @@
-
-If you want to obtain the dataset file, please click on the following link.
-链接：https://pan.baidu.com/s/1Xj4umSVUMvNksvDc1g52kA?pwd=o44n 
-提取码：o44n
-Place the dataset files into the M2FNet/datasets/HOUSTON2013 folder.
+#If you want to test the performance of the network, you can directly run TestHouston2013.py. 
+#If you want to retrain the network, you can run TrainHouston2013.py.
