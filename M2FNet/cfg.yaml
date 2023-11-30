@@ -1,0 +1,16 @@
+#common settings
+mode: train
+#predict settings
+val_weights: ./Weights_Houston2013/net_params_Houston2013.pkl
+device: cuda:0
+#train settings
+train_weights: !
+train_dataset: HOUSTON2013
+batch_size: 64
+patch_size: 11
+testSizeNumber: 100
+init_lr: 5e-4
+step_size: 50
+epochs: 500
+go: 1
+end: 10
