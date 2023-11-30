@@ -1,5 +1,1 @@
-
-If you want to obtain the dataset file, please click on the following link.
-链接：https://pan.baidu.com/s/1Xj4umSVUMvNksvDc1g52kA?pwd=o44n 
-提取码：o44n
-Place the dataset files into the M2FNet/datasets/HOUSTON2013 folder.
+Please place the downloaded dataset files (Houston2013_HSI.mat, Houston2013_DSM.mat, Houston2013_TR.mat, Houston2013_TE.mat) into this folder.
