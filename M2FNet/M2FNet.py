@@ -166,34 +166,6 @@ class Mlp(nn.Module):
         x = self.dropout(x)
         return x
 
-
-class Block(nn.Module):
-    def __init__(self, dim, blockNum=0):
-        super(Block, self).__init__()
-        self.hidden_size = dim
-        self.attention_norm = LayerNorm(dim, eps=1e-6)
-        kernels = [3, 5]
-        self.cls_norm = LayerNorm(dim, eps=1e-6)
-        self.spec_morph = nn.Sequential(SpectralMorph(FM, FM * 2, kernels[blockNum]), nn.BatchNorm2d(FM), nn.GELU())
-        self.spat_morph = nn.Sequential(SpatialMorph(FM, FM * 2, kernels[blockNum]), nn.BatchNorm2d(FM), nn.GELU())
-
-    def forward(self, x):
-        ht, w = x.shape[2:]
-        rest = x[:, 1:]
-        rest1 = rest
-        rest1 = self.spec_morph(rest1)
-        rest2 = rest
-        rest2 = self.spat_morph(rest2)
-        rest = torch.cat([rest1, rest2], dim=1)
-        x = torch.cat([x[:, 0:1, :], rest], dim=1)
-        clsTok = x[:, 0:1]
-        h = clsTok
-        clsTok = self.attn(self.attention_norm(x.reshape(x.shape[0], x.shape[1], -1))).reshape(x.shape[0], 1, ht, w)
-        clsTok = clsTok + h
-        clsTok = self.cls_norm(clsTok.reshape(clsTok.shape[0], clsTok.shape[1], -1)).reshape(clsTok.shape)
-        x = torch.cat([clsTok, x[:, 1:]], dim=1)
-        return x
-
 class Residual(nn.Module):
     def __init__(self, fn):
         super().__init__()
