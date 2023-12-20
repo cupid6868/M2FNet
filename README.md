@@ -1,4 +1,4 @@
-# Hyperspectral_image_classification
+# Multi-Scale 3D-2D mixed CNN and Lightweight Attention-Free Transformer for Hyperspectral and LiDAR classification
 
 If you want to obtain the dataset file, please click on the following link. 
 
